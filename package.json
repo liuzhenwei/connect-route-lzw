@@ -1,0 +1,18 @@
+{
+  "name": "connect-route-lzw",
+  "version": "1.0.0",
+  "description": "connect-route by liuzhenwei modify",
+  "readme": "connect-route by liuzhenwei modify",
+  "main": "index.js",
+  "keywords": [
+    "connect",
+    "router"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liuzhenwei/connect-route-lzw.git"
+  },
+  "author": "liuzhenwei",
+  "dependencies": {},
+  "license": "MIT"
+}
