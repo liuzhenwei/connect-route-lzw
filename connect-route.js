@@ -15,7 +15,17 @@
 				for (i = 0; i < arguments.length; i++) {
 					var arg = arguments[i], argType = typeof arg;
 					if( argType === 'string' ){
-						routes.push(arg);
+						var opt = arg.match(/\([^\)]*\)/g);
+						if( opt ){
+							var route = arg;
+							routes.push(route.replace(/[\(\)]/g, ''));
+							for( var j = opt.length - 1; j >= 0; j -- ){
+								route = route.replace(opt[j], '');
+								routes.push(route.replace(/[\(\)]/g, ''));
+							}		
+						} else {
+							routes.push(arg);
+						}
 					} else if( argType === 'function' ){
 						handler.push(arg);
 					} else if( isArray(arg) ){
