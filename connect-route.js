@@ -4,10 +4,6 @@
 		separator = /^[\s\/]+|[\s\/]+$/g,
 		i, length,
 
-		isArray = function(obj) {
-			return obj instanceof Array;
-		},
-
 		createMethodHandler = function (method) {
 			method = method.toUpperCase();
 			return function () {
@@ -28,7 +24,7 @@
 						}
 					} else if( argType === 'function' ){
 						handler.push(arg);
-					} else if( isArray(arg) ){
+					} else if( Array.isArray(arg) ){
 						routes = routes.concat(arg);
 					}
 				}
@@ -45,7 +41,7 @@
 	Router.prototype.add = function (method, route, handler) {
 		var	parts, current, i, length, name;
 
-		if (isArray(handler) !== true) { return; }
+		if (Array.isArray(handler) !== true) { return; }
 
 		if (!this.routes[method]) {
 			this.routes[method] = { childs: {}, handler: undefined, route: undefined };
