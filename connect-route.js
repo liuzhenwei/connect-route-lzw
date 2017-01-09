@@ -1,3 +1,5 @@
+var objectAssign = require('object-assign');
+
 (function () {
 	'use strict';
 	var methods = [ 'get', 'post', 'put', 'head', 'patch', 'delete', 'connect', 'options', 'trace', 'copy', 'lock', 'mkcol', 'move', 'propfind', 'proppatch', 'unlock', 'report', 'mkactivity', 'checkout', 'merge' ],
@@ -124,7 +126,7 @@
 
 			if (action.handler) {
 				req.route = action.route;
-				req.params = action.params;
+				req.params = objectAssign(action.params, req.params || {});
 				var nexts = [next];
 				for( var i = action.handler.length - 1; i > 0; i -- ){
 					nexts.unshift((function(index){
